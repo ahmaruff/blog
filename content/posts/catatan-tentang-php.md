@@ -1,0 +1,121 @@
++++
+publishdate = '2025-06-22T22:23:24+07:00'
+lastmod = '2025-06-23T22:23:24+07:00'
+draft = true
+menus = 'posts'
+title = 'Catatan Tentang PHP'
+tags = ["php"]
++++
+
+> Ini catatan random saya selama mengeksplorasi PHP. Lebih seperti changelog, jadi kemungkinan akan diupdate berkala.
+
+## 2025-06-22
+
+Hari ini saya belajar tentang beberapa fitur PHP yang tidak pernah saya pikirkan sebelumnya.  
+Berkat Laravel, semuanya sudah tersedia, sehingga saya tak pernah memikirkan PHP lebih mendalam sebagai sebuah programming language.
+
+### 1. Interface
+
+Sama seperti di bahasa lain, interface ini umumnya digunakan sebagai _contract agreement_ tentang suatu class
+yang memungkinkan memiliki berbagai implementasi. Misalnya `interface UserRepository`,
+yang bisa saja diimplementasikan menggunakan MySQL maupun PostgreSQL  
+Hal ini memungkinkan _method signature_ keduanya tetap sama,
+sehingga "consumer" dari interface tersebut tidak perlu melakukan penyesuaian apabila implementasinya berubah.
+
+Contoh:
+
+```php
+interface UserRepository
+{
+    public function set($params): string;
+    public function get(): string;
+}
+
+class MysqlUserRepository implements UserRepository
+{
+    public function set($params): string
+    {
+        // implementasi dengan MySQL
+    }
+
+    public function get(): string
+    {
+        // implementasi
+    }
+}
+
+class PgUserRepository implements UserRepository
+{
+    public function set($params): string
+    {
+        // implementasi dengan PostgreSQL
+    }
+
+    public function get(): string
+    {
+        // implementasi
+    }
+}
+```
+
+Kedua class tersebut mengimplementasikan interface yang sama, sehingga kode manapun yang menerima
+`UserRepository` tetap dapat menggunakan kedua method tanpa mengetahui implementasinya.
+
+### 2. Trait
+
+Trait pada dasarnya adalah sekumpulan method yang dapat dicompose ke dalam berbagai class.
+Biasanya digunakan untuk menyisipkan fungsi-fungsi umum ke beberapa class tanpa menggunakan inheritance.
+
+Contoh:
+
+```php
+trait HasSlug
+{
+    public function generateSlug(string $title): string
+    {
+        return strtolower(str_replace(' ', '-', $title));
+    }
+}
+
+class Blog
+{
+    use HasSlug; // otomatis class Blog memiliki method generateSlug()
+}
+```
+
+### 3. Favor Composition Over Inheritance
+
+Intinya, kita lebih disarankan menggunakan composition (misalnya melalui dependency injection) dibanding inheritance.
+Composition lebih fleksibel, mudah di-testing, dan tidak tightly coupled.
+
+
+Contoh:
+
+```php
+class User
+{
+    protected $name;
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+}
+
+class Blog
+{
+    public function __construct(public User $user) {}
+
+    public function name(): string
+    {
+        return $this->user->name();
+    }
+}
+
+```
+
+Dalam contoh di atas, kita bisa mendapatkan nilai User.name tanpa harus melakukan inheritance.
+Ini akan sangat bermanfaat jika konstruktor menerima interface alih-alih class,
+karena memudahkan saat ingin mengganti implementasi dependency-nya.
+
+
