@@ -19,4 +19,4 @@ Yang penting nulis — biar pikiran nggak numpuk di kepala doang.
 Terima kasih sudah mampir.
 Kalau ada hal yang pengin diobrolin, boleh banget kontak saya langsung.
 
-[Email](mailto:ahmadmaruf201@gmail.com) | [LinkedIn](http://linkedin.com/in/ahmaruff) | [Github](https://github.com/ahmaruff) 
+[Email](mailto:ahmadmaruf201@gmail.com) | [Resume](https://ahmaruff.github.io/resume) | [LinkedIn](http://linkedin.com/in/ahmaruff) | [Github](https://github.com/ahmaruff) 

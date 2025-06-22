@@ -3,7 +3,7 @@ date = '2025-06-22T12:08:27+07:00'
 draft = false
 menus = 'posts'
 title = 'Hello World'
-tags = ["personal", "hello"]
+tags = ["notes"]
 +++
 
 Halo dunia! 👋
