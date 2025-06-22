@@ -1,15 +1,11 @@
 +++
-publishdate = '2025-06-22T22:23:24+07:00'
-lastmod = '2025-06-23T22:23:24+07:00'
-draft = true
+publishdate = '2025-07-01T22:23:24+07:00'
+lastmod = '2025-07-01T22:23:24+07:00'
+draft = false
 menus = 'posts'
-title = 'Catatan Tentang PHP'
+title = 'Catatan Tentang PHP: Trait, Interface, dan Class Composition'
 tags = ["php"]
 +++
-
-> Ini catatan random saya selama mengeksplorasi PHP. Lebih seperti changelog, jadi kemungkinan akan diupdate berkala.
-
-## 2025-06-22
 
 Hari ini saya belajar tentang beberapa fitur PHP yang tidak pernah saya pikirkan sebelumnya.  
 Berkat Laravel, semuanya sudah tersedia, sehingga saya tak pernah memikirkan PHP lebih mendalam sebagai sebuah programming language.
