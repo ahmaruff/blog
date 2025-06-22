@@ -79,7 +79,11 @@ enableRobotsTXT = true
     name = "Ahmad Ma'ruf" # Your name as shown in the RSS feed metadata
     email = "ahmadmaruf2701@gmail.com" # Added to the footer so readers can reply to posts
 
-  subtitle = 'Dev Notes & Portfolio'
   [params.contact]
     email = 'ahmadmaruf2701@gmail.com'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
 
