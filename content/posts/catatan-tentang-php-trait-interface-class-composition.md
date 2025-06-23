@@ -1,6 +1,5 @@
 +++
-publishdate = '2025-07-01T22:23:24+07:00'
-lastmod = '2025-07-01T22:23:24+07:00'
+date = '2025-06-23T20:23:24+07:00'
 draft = false
 menus = 'posts'
 title = 'Catatan Tentang PHP: Trait, Interface, dan Class Composition'
@@ -114,4 +113,6 @@ Dalam contoh di atas, kita bisa mendapatkan nilai User.name tanpa harus melakuka
 Ini akan sangat bermanfaat jika konstruktor menerima interface alih-alih class,
 karena memudahkan saat ingin mengganti implementasi dependency-nya.
 
-
+Dulu PHP sering dicap jelek dan berantakan—dan memang, dulu nulis PHP bisa bikin pusing sendiri.
+Tapi setelah memahami fitur-fitur "bahasa modern" ini, saya jadi sadar kalau PHP juga bisa rapi dan elegan.
+Laravel mungkin menyembunyikan banyak detail, tapi ngerti dasar-dasarnya bikin ngoding jadi lebih menyenangkan.
