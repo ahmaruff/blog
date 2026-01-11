@@ -101,11 +101,17 @@ h4 { font-size: calc(var(--size) * 1.8); }
 /* LIST */
 ul,
 ol {
-  padding-inline-start: var(--spacing);
+  padding-inline-start: 2.4rem; /* lebih kecil & konsisten */
+  margin-block: 1.2rem; /* override default browser */
 }
 
 li {
-  margin-block-start: var(--spacing);
+  margin-block-start: 0.6rem; /* kecil & readable */
+}
+
+/* optional: biar item pertama gak ke-dorong */
+li:first-child {
+  margin-block-start: 0;
 }
 
 /* BLOCKQUOTE */
