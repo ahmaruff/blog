@@ -167,20 +167,27 @@ p.byline {
   opacity: 0.6;
 }
 
-/* CODE */
-code {
+
+/* INLINE CODE */
+:not(pre) > code {
   font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro',
     Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-  padding: 2px calc(var(--spacing) / 4);
-  background-color: var(--code-bg);
+  padding: 2px 6px;
+  background-color: #e5edff; /* soft blue-gray */
+  color: #1e40af; /* darker text */
   font-size: calc(var(--size) * 1.4);
-  border-radius: 6px;
+  border-radius: 5px;
+  font-weight: 500;
 }
 
+/* BLOCK CODE (keep dark) */
 pre code {
   display: block;
   padding: var(--spacing);
+  background-color: var(--code-bg);
+  color: #f8f8f2;
   overflow-x: auto;
+  border-radius: 8px;
 }
 
 /* TABLE */
