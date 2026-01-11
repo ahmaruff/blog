@@ -1,0 +1,24 @@
+{{ define "main" }}
+<header>
+	<h1>{{ .Title }}</h1>
+	{{ .Content }}
+</header>
+
+<div class="portfolio-list">
+	{{ range .Pages }}
+	<article>
+		<a href="{{ .Permalink }}">
+			<h2>{{ .Title }}</h2>
+		</a>
+		<div class="summary">
+			{{ with .Params.featured_image }}
+			<img src="{{ . }}" alt="{{ $.Title }}" class="featured-image">
+			{{ end }}
+
+			{{ .Summary }}
+		</div>
+		<a href="{{ .Permalink }}">{{ i18n "readMore" }} &rarr;</a>
+	</article>
+	{{ end }}
+</div>
+{{ end }}

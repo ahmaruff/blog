@@ -1,0 +1,54 @@
+{{ define "main" }}
+{{ if not .Params.menu }}
+<h1>{{ .Title }}</h1>
+<p class="byline">
+    <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+        {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+    </time>
+    {{ with .Params.author }}· {{.}}{{ end }}
+</p>
+{{ end }}
+
+<content>
+    {{/* Get the raw content of the page, including the front matter. */}}
+    {{ $content := .RawContent }}
+
+    {{/* Check if the content contains the summary splitter. */}}
+    {{ if strings.Contains $content "<!--more-->" }}
+    {{/* Split the content into two parts at the splitter. */}}
+    {{ $splitContent := split $content "<!--more-->" }}
+
+    {{/* Render the second part (the content after the summary). */}}
+    {{ $.Page.RenderString (index $splitContent 1) }}
+
+    {{ else }}
+
+    {{/* If there's no splitter, render the full content as normal. */}}
+    {{ .Content }}
+
+    {{ end }}
+</content>
+<p>
+    {{ range (.GetTerms "tags") }}
+    <a class="blog-tags" href="{{ .RelPermalink }}">#{{ lower .LinkTitle }}</a>
+    {{ end }}
+</p>
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+    {{ with $.CurrentSection }}
+    <p>
+        <a href="{{ .RelPermalink }}" class="back-button">← {{ i18n "backTo" }} {{ .Title }}</a>
+    </p>
+    {{ end }}
+
+    {{ if not .Params.hideReply }}
+    {{ with .Site.Params.author.email }}
+    <p>
+        <a href='mailto:{{ . }}?subject={{ i18n "email-subject" }}"{{ default $.Site.Title $.Page.Title }}"'>
+            {{ i18n "email-reply" }} ↪
+        </a>
+    </p>
+    {{ end }}
+    {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,20 @@
+[filtering-for]
+  other = "Saring untuk"
+
+[no-posts]
+  other = "Belum ada unggahan"
+
+[email-subject]
+  other = "Balas ke "
+
+[email-reply]
+  other = "Balas unggahan ini melalui email"
+
+[skip-link]
+  other = "Lewati unggahan ini"
+
+[backTo]
+  other = "Kembali ke"
+
+[readMore]
+  other = "Lebih lanjut"
