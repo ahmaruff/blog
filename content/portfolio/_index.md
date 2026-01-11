@@ -4,4 +4,4 @@ menus = "main"
 weight = 3
 +++
 
-_Ok, ini kumpulan kerjaan saya belakangan ini. Bisa dicek di bawah ya :)_
+Berikut beberapa project yang pernah saya kerjakan, mencakup pengembangan aplikasi, integrasi sistem, serta implementasi berbagai fitur pada produk digital.
