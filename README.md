@@ -125,7 +125,7 @@ You can customize the site without touching the original theme files by modifyin
 
 ## Deployment
 
-Deployment is handled **automatically** by a GitHub Actions workflow defined in `.github/workflows/hugo.yaml`.
+Deployment is handled **automatically** by a GitHub Actions workflow defined in `.github/workflows/hugo.yml`.
 
 **Workflow:**
 1.  **Push** changes to the `main` branch.
