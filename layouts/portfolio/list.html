@@ -1,24 +1,59 @@
 {{ define "main" }}
-<header>
-	<h1>{{ .Title }}</h1>
-	{{ .Content }}
+
+<header class="mb-1">
+  <h1>{{ .Title }}</h1>
+  <div class="text-muted">
+    {{ .Content }}
+  </div>
 </header>
 
-<div class="portfolio-list">
-	{{ range .Pages }}
-	<article>
-		<a href="{{ .Permalink }}">
-			<h2>{{ .Title }}</h2>
-		</a>
-		<div class="summary">
-			{{ with .Params.featured_image }}
-			<img src="{{ . }}" alt="{{ $.Title }}" class="featured-image">
-			{{ end }}
+<div class="portfolio-grid">
 
-			{{ .Summary }}
-		</div>
-		<a href="{{ .Permalink }}">{{ i18n "readMore" }} &rarr;</a>
-	</article>
-	{{ end }}
+  {{ range .Pages }}
+  <article class="portfolio-item">
+
+    <!-- Image -->
+    {{ with .Params.featured_image }}
+    <a href="{{ $.Permalink }}" class="portfolio-image-link">
+      <img src="{{ . }}" alt="{{ $.Title }}" class="portfolio-image">
+    </a>
+    {{ end }}
+
+    <div class="portfolio-content">
+      <!-- Title -->
+      <h2 class="portfolio-title">
+        <a href="{{ .RelPermalink }}">
+          {{ .Title }}
+        </a>
+      </h2>
+
+      <!-- Tech Stack Badges -->
+      {{ with .Params.tags }}
+      <div class="badge-group">
+        {{ range . }}
+          {{ if ne . "portfolio" }}
+            <span class="badge">{{ . }}</span>
+          {{ end }}
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <!-- Summary -->
+      <div class="portfolio-summary">
+        {{ .Summary | plainify | truncate 100 }}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-1">
+        <a href="{{ .RelPermalink }}" class="back-button">
+          {{ i18n "readMore" }} →
+        </a>
+      </div>
+    </div>
+
+  </article>
+  {{ end }}
+
 </div>
+
 {{ end }}

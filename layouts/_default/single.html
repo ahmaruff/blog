@@ -1,36 +1,63 @@
 {{ define "main" }}
-{{ if not .Params.menu }}
-<h1>{{ .Title }}</h1>
-<p class="byline">
-    <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
-        {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
-    </time>
-    {{ with .Params.author }}· {{.}}{{ end }}
-</p>
-{{ end }}
-<content>
-    {{ .Content }}
-</content>
-<p>
-    {{ range (.GetTerms "tags") }}
-    <a class="blog-tags" href="{{ .RelPermalink }}">#{{ lower .LinkTitle }}</a>
-    {{ end }}
-</p>
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-    {{ with $.CurrentSection }}
-    <p>
-        <a href="{{ .RelPermalink }}" class="back-button">← {{ i18n "backTo" }} {{ .Title }}</a>
-    </p>
-    {{ end }}
 
-    {{ if not .Params.hideReply }}
-    {{ with .Site.Params.author.email }}
-    <p>
-        <a href='mailto:{{ . }}?subject={{ i18n "email-subject" }}"{{ default $.Site.Title $.Page.Title }}"'>
-            {{ i18n "email-reply" }} ↪
-        </a>
-    </p>
-    {{ end }}
-    {{ end }}
+{{ if not .Params.menu }}
+
+<header class="article-header">
+
+  <!-- Title -->
+  <h1 class="mb-1">{{ .Title }}</h1>
+
+  <!-- Meta -->
+  <div class="article-meta">
+    <time datetime='{{ .Date.Format "2006-01-02" }}'>
+      {{ .Date.Format (default "Jan 2, 2006" .Site.Params.dateFormat) }}
+    </time>
+    {{ with .Params.author }} · {{ . }}{{ end }}
+  </div>
+
+</header>
+
+{{ end }}
+
+<!-- Content -->
+<article>
+  {{ .Content }}
+</article>
+
+<!-- Tags -->
+{{ if (.GetTerms "tags") }}
+<div class="tag-list">
+  {{ range (.GetTerms "tags") }}
+    <a class="tag-item" href="{{ .RelPermalink }}">
+      #{{ lower .LinkTitle }}
+    </a>
+  {{ end }}
 </div>
+{{ end }}
+
+<!-- Footer nav -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4rem;">
+
+  <!-- Back -->
+  {{ with $.CurrentSection }}
+  <p>
+    <a href="{{ .RelPermalink }}" class="back-button">
+      ← {{ i18n "backTo" }} {{ .Title }}
+    </a>
+  </p>
+  {{ end }}
+
+  <!-- Reply -->
+  {{ if not .Params.hideReply }}
+  {{ with .Site.Params.author.email }}
+  <p style="opacity: 0.7;">
+    <a href='mailto:{{ . }}?subject={{ i18n "email-subject" }}"{{ default $.Site.Title $.Page.Title }}"'>
+      {{ i18n "email-reply" }} ↪
+    </a>
+  </p>
+  {{ end }}
+  {{ end }}
+
+</div>
+
 {{ end }}

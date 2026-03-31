@@ -1,12 +1,15 @@
 +++
+title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 date = '{{ .Date }}'
 draft = true
-title = '{{ replace .File.ContentBaseName "-" " " | title }}'
+
 featured_image = ""
+summary = ""
+link = "" # Link to the live project or repository
+
+tags = ["portfolio"] # Add tech stack here (e.g., "nodejs", "react")
 +++
 
-Write your rich summary here. It can include images, headings, and bold text.
+Short project summary.
 
 <!--more-->
-
-This is the main, detailed content for the single project page.

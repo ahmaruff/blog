@@ -1,0 +1,66 @@
+{{ define "main" }}
+
+<header class="mb-1">
+  <h1>{{ .Title }}</h1>
+  <div class="text-muted">
+    {{ .Content }}
+  </div>
+</header>
+
+<content>
+  {{ if .Data.Singular }}
+    <h3 class="blog-filter">{{ i18n "filtering-for" }} "{{ .Title }}"</h3>
+  {{ end }}
+
+  <ul class="post-list">
+    {{ range .Pages }}
+    <li class="post-item">
+
+      <!-- Title -->
+      <div class="post-item-title">
+        {{ if .Params.link }}
+          <a href="{{ .Params.link }}" target="_blank">
+            {{ .Title }} ↪
+          </a>
+        {{ else }}
+          <a href="{{ .RelPermalink }}">
+            {{ .Title }}
+          </a>
+        {{ end }}
+      </div>
+
+      <!-- Meta -->
+      <div class="post-item-meta">
+        <time datetime='{{ .Date.Format "2006-01-02" }}'>
+          {{ .Date.Format (default "Jan 2, 2006" .Site.Params.dateFormat) }}
+        </time>
+      </div>
+
+      <!-- Excerpt -->
+      {{ if .Summary }}
+      <div class="post-item-summary">
+        {{ .Summary | plainify | truncate 150 }}
+      </div>
+      {{ end }}
+
+    </li>
+    {{ else }}
+    <li>
+      {{ i18n "no-posts" }}
+    </li>
+    {{ end }}
+  </ul>
+
+  <!-- Tags -->
+  {{ if not .Data.Singular }}
+    <div class="tag-list">
+      {{ range .Site.Taxonomies.tags }}
+        <a class="tag-item" href="{{ .Page.RelPermalink }}">
+          #{{ lower .Page.Title }}
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+
+</content>
+{{ end }}

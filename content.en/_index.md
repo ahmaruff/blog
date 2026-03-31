@@ -4,21 +4,16 @@ menus = "main"
 weight = 1
 +++
 
-# Hola, Amigos!
+# Ahmad Ma'ruf
 
-I’m Ahmad Ma’ruf, a software developer with a focus on backend development and system design.
-This blog serves as my personal space to document what I’m working on, learning, and thinking about in the world of software engineering.
+_**Writing about the craft of software engineering, backend systems, and the lessons learned when things break.**_
 
-Most of the content here revolves around:
+This blog is a collection of notes from the field—covering everything from system design and implementation to the reality of managing production environments. 
 
-- Backend development
-- APIs and system architecture
-- Real-world project experiences
-- problem-solving in production environments
+And, of course, the occasional side project that served no purpose other than curiosity.
 
-The posts are practical and reflective — based on real cases I encounter in my daily work as an engineer.
+---
 
-Thanks for stopping by.
-If you’re interested in discussing backend engineering, remote work, or potential collaborations, feel free to reach out.
+**Let’s connect or collaborate:**
 
-[Email](mailto:ahmadmaruf201@gmail.com) | [Resume](https://ahmaruff.github.io/resume) | [LinkedIn](http://linkedin.com/in/ahmaruff) | [Github](https://github.com/ahmaruff) 
+[Email](mailto:ahmadmaruf201@gmail.com) · [Resume](https://ahmaruff.github.io/resume) · [LinkedIn](http://linkedin.com/in/ahmaruff) · [GitHub](https://github.com/ahmaruff)

@@ -4,21 +4,16 @@ menus = "main"
 weight = 1
 +++
 
-# Hola, Amigos!
+# Ahmad Ma'ruf
 
-Saya Ahmad Ma’ruf, seorang software developer dengan fokus pada backend development dan perancangan sistem.
-Blog ini saya gunakan sebagai ruang dokumentasi pribadi untuk mencatat proses belajar, pengalaman kerja, serta berbagai hal teknis yang saya temui dalam pengembangan aplikasi.
+_**Writing about the craft of software engineering, backend systems, and the lessons learned when things break.**_
 
-Topik yang sering saya tulis antara lain:
+Blog ini adalah kumpulan catatan praktis—mulai dari desain dan implementasi sistem, hingga realita dalam menangani masalah di production.
 
-- Backend development
-- API dan system architecture
-- Pengalaman mengerjakan project
-- problem solving di lingkungan production
+Dan tentu saja, beberapa proyek sampingan yang lahir sekadar karena rasa penasaran.
 
-Tulisan di sini bersifat reflektif dan praktis — berangkat dari kasus nyata yang saya hadapi sehari-hari sebagai developer.
+---
 
-Terima kasih sudah berkunjung.
-Jika tertarik berdiskusi atau berkolaborasi, silakan hubungi saya.
+**Mari berdiskusi atau kolaborasi:**
 
-[Email](mailto:ahmadmaruf201@gmail.com) | [Resume](https://ahmaruff.github.io/resume) | [LinkedIn](http://linkedin.com/in/ahmaruff) | [Github](https://github.com/ahmaruff) 
+[Email](mailto:ahmadmaruf201@gmail.com) · [Resume](https://ahmaruff.github.io/resume) · [LinkedIn](http://linkedin.com/in/ahmaruff) · [GitHub](https://github.com/ahmaruff)

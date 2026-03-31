@@ -1,54 +1,73 @@
 {{ define "main" }}
-{{ if not .Params.menu }}
-<h1>{{ .Title }}</h1>
-<p class="byline">
-    <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
-        {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+
+<header class="article-header">
+
+  <!-- Title -->
+  <h1 class="mb-1">{{ .Title }}</h1>
+
+  <!-- Meta -->
+  <div class="article-meta mb-1">
+    <time datetime='{{ .Date.Format "2006-01-02" }}'>
+      {{ .Date.Format (default "Jan 2, 2006" .Site.Params.dateFormat) }}
     </time>
-    {{ with .Params.author }}· {{.}}{{ end }}
-</p>
+  </div>
+
+  <!-- Tech Stack Badges -->
+  {{ with .Params.tags }}
+  <div class="badge-group mb-1">
+    {{ range . }}
+      {{ if ne . "portfolio" }}
+        <span class="badge">{{ . }}</span>
+      {{ end }}
+    {{ end }}
+  </div>
+  {{ end }}
+
+  <!-- External Link -->
+  {{ with .Params.link }}
+  <p class="mb-1">
+    <a href="{{ . }}" target="_blank">
+      View Project ↪
+    </a>
+  </p>
+  {{ end }}
+
+  <!-- Featured Image -->
+  {{ with .Params.featured_image }}
+  <div class="featured-image-container">
+    <img src="{{ . }}" alt="{{ $.Title }}" style="width:100%;">
+  </div>
+  {{ end }}
+
+</header>
+
+<!-- Content -->
+<article>
+  {{ .Content }}
+</article>
+
+<!-- Tags -->
+{{ if (.GetTerms "tags") }}
+<div class="tag-list">
+  {{ range (.GetTerms "tags") }}
+    <a class="tag-item" href="{{ .RelPermalink }}">
+      #{{ lower .LinkTitle }}
+    </a>
+  {{ end }}
+</div>
 {{ end }}
 
-<content>
-    {{/* Get the raw content of the page, including the front matter. */}}
-    {{ $content := .RawContent }}
+<!-- Footer -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4rem;">
 
-    {{/* Check if the content contains the summary splitter. */}}
-    {{ if strings.Contains $content "<!--more-->" }}
-    {{/* Split the content into two parts at the splitter. */}}
-    {{ $splitContent := split $content "<!--more-->" }}
+  {{ with $.CurrentSection }}
+  <p>
+    <a href="{{ .RelPermalink }}" class="back-button">
+      ← {{ i18n "backTo" }} {{ .Title }}
+    </a>
+  </p>
+  {{ end }}
 
-    {{/* Render the second part (the content after the summary). */}}
-    {{ $.Page.RenderString (index $splitContent 1) }}
-
-    {{ else }}
-
-    {{/* If there's no splitter, render the full content as normal. */}}
-    {{ .Content }}
-
-    {{ end }}
-</content>
-<p>
-    {{ range (.GetTerms "tags") }}
-    <a class="blog-tags" href="{{ .RelPermalink }}">#{{ lower .LinkTitle }}</a>
-    {{ end }}
-</p>
-
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-    {{ with $.CurrentSection }}
-    <p>
-        <a href="{{ .RelPermalink }}" class="back-button">← {{ i18n "backTo" }} {{ .Title }}</a>
-    </p>
-    {{ end }}
-
-    {{ if not .Params.hideReply }}
-    {{ with .Site.Params.author.email }}
-    <p>
-        <a href='mailto:{{ . }}?subject={{ i18n "email-subject" }}"{{ default $.Site.Title $.Page.Title }}"'>
-            {{ i18n "email-reply" }} ↪
-        </a>
-    </p>
-    {{ end }}
-    {{ end }}
 </div>
+
 {{ end }}
